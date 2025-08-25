@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queen Royal Spa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --morado-claro: #9A3DD9;
+      --morado-oscuro: #532273;
+      --morado-profund: #401B59;
+      --dorado: #BF9663;
+      --negro: #0D0D0D;
+      --blanco: #ffffff;
+      --gris-claro: #fafafa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--blanco);
+      color: var(--negro);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--blanco);
+      border-bottom: 2px solid var(--dorado);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      height: 55px;
+    }
+
+    .logo-container h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--morado-oscuro);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--morado-oscuro);
+      font-weight: bold;
+      transition: color 0.4s ease, transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--morado-claro);
+      transform: scale(1.05);
+    }
+
+    /* Botón modo oscuro */
+    .dark-toggle {
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--morado-oscuro);
+      transition: color 0.3s ease;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--morado-oscuro);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--blanco);
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--morado-oscuro);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      color: var(--morado-profund);
+    }
+
+    /* Servicios */
+    .servicios {
+      padding: 60px 20px;
+      text-align: center;
+      background: var(--gris-claro);
+    }
+
+    .servicios h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: var(--morado-oscuro);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .servicios-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .servicio-card {
+      background: var(--blanco);
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    }
+
+    .servicio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 8px 20px rgba(155, 61, 217, 0.2);
+      border: 1px solid var(--dorado);
+    }
+
+    .servicio-card i {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--morado-claro), var(--dorado));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .servicio-card h3 {
+      font-size: 1.3rem;
+      color: var(--morado-oscuro);
+      margin-bottom: 10px;
+    }
+
+    /* Galería */
+    .galeria {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .galeria h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: var(--morado-oscuro);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .galeria-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .galeria-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contacto */
+    .contacto {
+      padding: 60px 20px;
+      text-align: center;
+      background: var(--gris-claro);
+    }
+
+    .contacto h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--morado-oscuro);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      margin: 10px;
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: var(--blanco);
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+    }
+
+    .btn-instagram {
+      background: #E1306C;
+      color: var(--blanco);
+    }
+
+    .btn-instagram:hover {
+      background: #c22658;
+    }
+
+    .map-container {
+      margin-top: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--morado-oscuro);
+      color: var(--blanco);
+      margin-top: 40px;
+    }
+
+    /* =====================
+       MODO OSCURO
+    ===================== */
+    body.dark-mode {
+      background: #181818;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode header {
+      background: #222;
+      border-bottom: 2px solid var(--dorado);
+    }
+
+    body.dark-mode nav ul li a {
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .hero {
+      background: #222;
+    }
+
+    body.dark-mode .servicios {
+      background: #1f1f1f;
+    }
+
+    body.dark-mode .servicio-card {
+      background: #2a2a2a;
+      border: 1px solid #444;
+    }
+
+    body.dark-mode .galeria {
+      background: #181818;
+    }
+
+    body.dark-mode .contacto {
+      background: #1f1f1f;
+    }
+
+    body.dark-mode footer {
+      background: #111;
+    }
+
+    .dark-toggle {
+      cursor: pointer;
+    }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: var(--blanco);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      /* Ocultar nombre de la página en móvil */
+      .logo-container h1 {
+        display: none;
+      }
+
+      /* Menú en modo oscuro */
+      body.dark-mode nav ul {
+        background: #2a2a2a;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo Queen Royal Spa">
+      <h1>Queen Royal Spa</h1>
+    </div>
+    <nav>
+      <i class="fas fa-moon dark-toggle" id="darkToggle"></i>
+      <i class="fas fa-bars hamburger"></i>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Bienvenidos a Queen Royal Spa</h2>
+    <p>Tu lugar exclusivo para el cuidado y diseño de uñas con un toque de elegancia.</p>
+  </section>
+
+  <section class="servicios" id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="servicios-container">
+      <div class="servicio-card">
+        <i class="fas fa-hand-sparkles"></i>
+        <h3>Manicure</h3>
+        <p>Manicure clásica y spa para manos suaves y elegantes.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-shoe-prints"></i>
+        <h3>Pedicure</h3>
+        <p>Cuidado completo para pies saludables y hermosos.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-gem"></i>
+        <h3>Uñas Acrílicas</h3>
+        <p>Diseños personalizados y duraderos que destacan tu estilo.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-paint-brush"></i>
+        <h3>Nail Art</h3>
+        <p>Arte en uñas con estilos creativos y modernos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="galeria" id="galeria">
+    <h2>Galería</h2>
+    <div class="galeria-grid">
+      <img src="images/nails1.jpg" alt="Galería 1">
+      <img src="images/nails2.jpg" alt="Galería 2">
+      <img src="images/nails3.jpg" alt="Galería 3">
+      <img src="images/nails4.jpg" alt="Galería 4">
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <h2>Contáctanos</h2>
+    <p>Reserva tu cita o consulta más información a través de nuestras redes:</p>
+    <a href="https://wa.me/1234567890" target="_blank" class="btn btn-whatsapp">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <a href="https://instagram.com/tuinstagram" target="_blank" class="btn btn-instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Queen Royal Spa - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+    const darkToggle = document.getElementById('darkToggle');
+    const body = document.body;
+
+    // Toggle menú hamburguesa
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Toggle modo oscuro
+    darkToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      // Cambiar icono de luna a sol
+      if (body.classList.contains('dark-mode')) {
+        darkToggle.classList.remove('fa-moon');
+        darkToggle.classList.add('fa-sun');
+      } else {
+        darkToggle.classList.remove('fa-sun');
+        darkToggle.classList.add('fa-moon');
+      }
+    });
+  </script>
+
+</body>
+</html>
